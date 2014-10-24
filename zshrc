@@ -66,3 +66,6 @@ function myip() {
 alias phplint='find . -name "*.php" -exec php -l {} \; | grep "Parse error"'
 
 alias currentdt='echo $(date "+%Y%m%d%H%M%S")'
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
