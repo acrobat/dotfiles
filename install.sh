@@ -6,20 +6,21 @@
 
 ########## Variables
 
-dir=~/dotfiles                    				# dotfiles directory
-olddir=~/dotfiles_old             				# old dotfiles backup directory
-files="zshrc"    						# list of files/folders to symlink in homedir
+dir=~/dotfiles                    				            # dotfiles directory
+olddir=~/dotfiles_old             				            # old dotfiles backup directory
+files="zshrc gitignore gitconfig"    						# list of files/folders to symlink in homedir
 ohmyzsh_repo=http://github.com/robbyrussell/oh-my-zsh.git 	#Oh my zsh repo url
+zsh=~/.oh-my-zsh
 
 ##########
 
 # create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
+echo -n "Creating $olddir for backup of any existing dotfiles in ~ ... "
 mkdir -p $olddir
 echo "done"
 
 # change to the dotfiles directory
-echo -n "Changing to the $dir directory ..."
+echo -n "Changing to the $dir directory ... "
 cd $dir
 echo "done"
 
@@ -35,8 +36,8 @@ install_zsh () {
 # Test to see if zshell is installed.  If it is:
 if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
     # Clone my oh-my-zsh repository from GitHub only if it isn't already present
-    if [[ ! -d $dir/oh-my-zsh/ ]]; then
-        git clone $ohmyzsh_repo
+    if [[ ! -d "$zsh" ]]; then
+        git clone $ohmyzsh_repo $zsh
     fi
     # Set the default shell to zsh if it isn't currently set to zsh
     if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
@@ -60,4 +61,13 @@ fi
 install_zsh
 
 #copy ohmyzsh template
-ln -s $dir/zsh/doubleend.zsh-theme ~/.oh-my-zsh/themes/doubleeend.zsh-theme
+if [ ! -L "$zsh/themes/doubleeend.zsh-theme" ]; then
+    echo "Copy zsh theme"
+    ln -s $dir/zsh/doubleend.zsh-theme $zsh/themes/doubleeend.zsh-theme
+fi;
+
+#Cleanup after install
+if [ -z "$(ls -A $olddir)" ]; then
+    echo "Clean up"
+    rm -Rf $olddir
+fi;
