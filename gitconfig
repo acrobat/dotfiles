@@ -1,0 +1,18 @@
+[user]
+	name = Jeroen Thora
+	email = jeroenthora@gmail.com
+[core]
+	fileMode = false
+	excludesfile = ~/.gitignore
+[alias]
+	switch = !legit switch \"$@\"
+	branches = !legit branches
+	graft = !legit graft \"$@\"
+	harvest = !legit harvest \"$@\"
+	publish = !legit publish \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	sprout = !legit sprout \"$@\"
+	sync = !legit sync \"$@\"
+	resync = !legit resync
+
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short

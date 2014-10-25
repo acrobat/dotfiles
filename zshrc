@@ -45,27 +45,20 @@ plugins=(git symfony2 bower composer colored-man colorize cp sudo extract github
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
+# -------------------------------------------------------------------
+# Exports
+# -------------------------------------------------------------------
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-
-alias add2panel="python /usr/share/cinnamon/applets/panel-launchers@cinnamon.org/cinnamon-add-panel-launcher.py"
-
-# -------------------------------------------------------------------
-# FUNCTIONS
-# -------------------------------------------------------------------
- 
-# return my IP address
-function myip() {
-    ifconfig eth0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "eth0       : " $2}'
-#    ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
-#    ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
-#    ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
-#    ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
-}
-
-alias phplint='find . -name "*.php" -exec php -l {} \; | grep "Parse error"'
-
-alias currentdt='echo $(date "+%Y%m%d%H%M%S")'
-
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# -------------------------------------------------------------------
+# Aliases
+# -------------------------------------------------------------------
+
+# Add progam to panel (linux mint)
+alias add2panel="python /usr/share/cinnamon/applets/panel-launchers@cinnamon.org/cinnamon-add-panel-launcher.py"
+# PHPLint parser error checker
+alias phplint='find . -name "*.php" -exec php -l {} \; | grep "Parse error"'
+# Current datetime
+alias currentdt='echo $(date "+%Y%m%d%H%M%S")'
