@@ -6,8 +6,8 @@
 
 ########## Variables
 
-dir=~/dotfiles                    				            # dotfiles directory
-olddir=~/dotfiles_old             				            # old dotfiles backup directory
+dir=~/.dotfiles                    				            # dotfiles directory
+olddir=~/.dotfiles_old             				            # old dotfiles backup directory
 files="zshrc gitignore gitconfig"    						# list of files/folders to symlink in homedir
 ohmyzsh_repo=http://github.com/robbyrussell/oh-my-zsh.git 	#Oh my zsh repo url
 zsh=~/.oh-my-zsh
