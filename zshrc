@@ -62,3 +62,5 @@ alias add2panel="python /usr/share/cinnamon/applets/panel-launchers@cinnamon.org
 alias phplint='find . -name "*.php" -exec php -l {} \; | grep "Parse error"'
 # Current datetime
 alias currentdt='echo $(date "+%Y%m%d%H%M%S")'
+
+alias rake="noglob rake" # allows square brackts for rake task invocation
