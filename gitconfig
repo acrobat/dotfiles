@@ -16,3 +16,4 @@
 	resync = !legit resync
 
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	tags = tag -n1 -l
