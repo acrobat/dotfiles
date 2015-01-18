@@ -15,5 +15,17 @@
 	sync = !legit sync \"$@\"
 	resync = !legit resync
 
+#   Just for brevity
+    stat = status
+
+#   Staging
+    stage = add --all
+    stage-patch = add --all -p
+    unstage = reset HEAD
+
+#   Make amending first-class
+    amend = commit --amend
+    amend-author = commit --amend -C HEAD --author
+
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	tags = tag -n1 -l
