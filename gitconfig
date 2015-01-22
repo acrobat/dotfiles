@@ -17,6 +17,8 @@
 
 #   Just for brevity
     	stat = status
+	
+	remotes = remote -v
 
 #   Staging
     	stage = add --all
@@ -32,3 +34,5 @@
 
 # List contributors with number of commits
 	contributors = shortlog --summary --numbered
+
+	
