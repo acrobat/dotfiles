@@ -6,10 +6,10 @@
 
 ########## Variables
 
-dir=~/.dotfiles                    				            # dotfiles directory
-olddir=~/.dotfiles_old             				            # old dotfiles backup directory
-files="zshrc gitignore gitconfig"    						# list of files/folders to symlink in homedir
-ohmyzsh_repo=http://github.com/robbyrussell/oh-my-zsh.git 	#Oh my zsh repo url
+dir=~/.dotfiles                    			        # dotfiles directory
+olddir=~/.dotfiles_old             			        # old dotfiles backup directory
+files="zshrc gitignore gitconfig"    				# list of files/folders to symlink in homedir
+ohmyzsh_repo=http://github.com/robbyrussell/oh-my-zsh.git 	# Oh my zsh repo url
 zsh=~/.oh-my-zsh
 
 ##########
@@ -61,9 +61,9 @@ fi
 install_zsh
 
 #copy ohmyzsh template
-if [ ! -L "$zsh/themes/doubleeend.zsh-theme" ]; then
+if [ ! -L "$zsh/themes/doubleend.zsh-theme" ]; then
     echo "Copy zsh theme"
-    ln -s $dir/zsh/doubleend.zsh-theme $zsh/themes/doubleeend.zsh-theme
+    ln -s $dir/zsh/doubleend.zsh-theme $zsh/themes/doubleend.zsh-theme
 fi;
 
 #Cleanup after install
