@@ -14,6 +14,7 @@
 	sprout = !legit sprout \"$@\"
 	sync = !legit sync \"$@\"
 	resync = !legit resync
+	undo = !legit undo
 
 #   Just for brevity
     	stat = status
@@ -32,7 +33,10 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	tags = tag -n1 -l
 
+	today = log --since=\"1 day ago\" --author=\"Yorick Peterse\" --pretty=oneline
+
 # List contributors with number of commits
 	contributors = shortlog --summary --numbered
 
-	
+# Reset filemode changes
+	permission-reset = !git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
