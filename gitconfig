@@ -33,7 +33,11 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	tags = tag -n1 -l
 
-	today = log --since=\"1 day ago\" --author=\"Jeroen Thora\" --pretty=oneline
+	today = log --since=\"1 day ago\" --author=\"`git config user.name`\" --pretty=oneline
+
+	standup-simple = !git log --branches --remotes --tags --no-merges --author=\"`git config user.name`\" --since="$(if [[ "Mon" == "$(date +%a)" ]]; then echo \"last friday\"; else echo \"yesterday\"; fi)" --format=%s
+	standup = !git log --branches --remotes --tags --no-merges --author=\"`git config user.name`\" --since="$(if [[ "Mon" == "$(date +%a)" ]]; then echo \"last friday\"; else echo \"yesterday\"; fi)" --format=\"%Cred%h%Creset - %s %Cgreen(%cd) %C(bold blue)<%an>%Creset\"
+	lazy-standup = !git standup-simple | spd-say -e
 
 # List contributors with number of commits
 	contributors = shortlog --summary --numbered
