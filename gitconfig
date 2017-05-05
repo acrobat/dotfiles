@@ -1,9 +1,14 @@
 [user]
 	name = Jeroen Thora
 	email = jeroenthora@gmail.com
+	signingkey = 6875186A15599DA9
 [core]
 	fileMode = false
 	excludesfile = ~/.gitignore
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
 [alias]
 	switch = !legit switch \"$@\"
 	branches = !legit branches
@@ -17,21 +22,22 @@
 	undo = !legit undo
 
 #   Just for brevity
-    	stat = status
+    stat = status
 	
 	remotes = remote -v
 	staged = diff --staged
 
 #   Staging
-    	stage = add --all
-    	stage-patch = add --all -p
+    stage = add --all
+    stage-patch = add --all -p
 	unstage = reset HEAD
 
 #   Make amending first-class
-	amend = commit --amend
-    	amend-author = commit --amend -C HEAD --author
+	# Amend the currently staged files to the latest commit
+	amend = commit --amend --reuse-message=HEAD
+    amend-author = commit --amend -C HEAD --author
 
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an> [%G?]%Creset'
 	tags = tag -n1 -l
 
 	today = log --since=\"1 day ago\" --author=\"`git config user.name`\" --pretty=oneline
