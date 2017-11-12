@@ -1,0 +1,3 @@
+alias ll='ls -lah'
+alias fix-files="sudo find . -type f -exec chmod 644 '{}' \; -print"
+alias fix-dirs="sudo find . -type d -exec chmod 755 '{}' \; -print"
