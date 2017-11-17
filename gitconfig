@@ -1,7 +1,8 @@
 [user]
 	name = Jeroen Thora
 	email = jeroenthora@gmail.com
-	signingkey = 6875186A15599DA9
+	# Temp disable signing key
+	#signingkey = 6875186A15599DA9
 [core]
 	fileMode = false
 	excludesfile = ~/.gitignore
