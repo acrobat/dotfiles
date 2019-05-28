@@ -41,7 +41,7 @@ ZSH_THEME="doubleend"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git symfony2 bower composer colored-man colorize cp sudo extract github vagrant npm yarn legit git-flow-avh)
+plugins=(git symfony2 bower composer colored-man-pages colorize cp sudo extract github vagrant npm yarn git-flow-avh)
 
 source $ZSH/oh-my-zsh.sh
 
