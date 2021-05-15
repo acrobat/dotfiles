@@ -4,3 +4,5 @@ Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 .idea/
 ## Ignore mac's DS_Store
 .DS_Store
+
+.hubkit

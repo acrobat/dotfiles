@@ -1,66 +1,77 @@
 [user]
-	name = Jeroen Thora
-	email = jeroenthora@gmail.com
-	# Temp disable signing key
-	#signingkey = 6875186A15599DA9
+        name = Jeroen Thora
+        email = jeroenthora@gmail.com
+        # Temp disable signing key
+        signingkey = 6875186A15599DA9
 [core]
-	fileMode = false
-	excludesfile = ~/.gitignore
+        fileMode = false
+        excludesfile = ~/.gitignore
 [commit]
-	gpgsign = true
+        gpgsign = true
 [gpg]
-	program = gpg2
+        #	program = gpg2
+        program = gpg
+[tag]
+        sort = version:refname
 [alias]
-	switch = !legit switch \"$@\"
-	branches = !legit branches
-	graft = !legit graft \"$@\"
-	harvest = !legit harvest \"$@\"
-	publish = !legit publish \"$@\"
-	unpublish = !legit unpublish \"$@\"
-	sprout = !legit sprout \"$@\"
-	sync = !legit sync \"$@\"
-	resync = !legit resync
-	undo = !legit undo
-
-#   Just for brevity
-    stat = status
-	
-    remotes = remote -v
-    staged = diff --staged
-
-# Add a file/directory to your .gitignore
-    ignore = "!f() { echo \"$1\" >> .gitignore; }; f"
-
-#   Staging
-    stage = add --all
-    stage-patch = add --all -p
-    unstage = reset HEAD
-
-#   Make amending first-class
-    # Amend the currently staged files to the latest commit
-    amend = commit --amend --reuse-message=HEAD
-    amend-author = commit --amend -C HEAD --author
-
-    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an> [%G?]%Creset'
-    tags = tag -n1 -l
-
-    today = log --since=\"1 day ago\" --author=\"`git config user.name`\" --pretty=oneline
-
-    standup-simple = !git log --branches --remotes --tags --no-merges --author=\"`git config user.name`\" --since="$(if [[ "Mon" == "$(date +%a)" ]]; then echo \"last friday\"; else echo \"yesterday\"; fi)" --format=%s
-    standup = !git log --branches --remotes --tags --no-merges --author=\"`git config user.name`\" --since=\"`$(if [[ "Mon" == "$(date +%a)" ]]; then echo \"last friday\"; else echo \"yesterday\"; fi)`\" --format=\"%Cred%h%Creset - %s %Cgreen(%cd) %C(bold blue)<%an>%Creset\"
-	lazy-standup = !git standup-simple | spd-say -e
-
-# List contributors with number of commits
-    contributors = shortlog --summary --numbered
-
-# Reset filemode changes
-    permission-reset = !git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
-	ignore = "!f() { echo \\\"$1\\\" >> .gitignore; }; f"
-	ignore = "!f() { echo $1 >> .gitignore; }; f"
-
-    st = status -sb
-
-    # Sometimes, when you do lots of rebasing/squashing, your git directory becomes very heavy.
-    # With this command, git automatically removes any orphan blob in the .git/ directory.
-    # Tested and approved! For a very often rebased repo, turned it from 4.8GB to 350MB... 😉
-    gcall = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc --aggressive
+        sw = !legit switch
+        branches = !legit branches
+        graft = !legit graft \"$@\"
+        harvest = !legit harvest \"$@\"
+        publish = !legit publish
+        unpublish = !legit unpublish
+        sprout = !legit sprout \"$@\"
+        sync = !legit sync
+        resync = !legit resync
+        undo = !legit undo
+        # Quick apply a patch from a url source
+        quick-apply = "!f() { curl $1 | git apply -v; }; f"
+        
+        #   Just for brevity
+        stat = status
+        
+        remotes = remote -v
+        staged = diff --staged
+        
+        # Add a file/directory to your .gitignore
+        ignore = "!f() { echo \"$1\" >> .gitignore; }; f"
+        
+        #   Staging
+        stage = add --all
+        stage-patch = add --all -p
+        unstage = reset HEAD
+        
+        #   Make amending first-class
+        # Amend the currently staged files to the latest commit
+        amend = commit --amend --reuse-message=HEAD
+        amend-author = commit --amend -C HEAD --author
+        
+        hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an> [%G?]%Creset'
+        tags = tag -n1 -l
+        
+        today = log --since=\"1 day ago\" --author=\"`git config user.name`\" --pretty=oneline
+        
+        standup-simple = !git log --branches --remotes --tags --no-merges --author=\"`git config user.name`\" --since="$(if [[ "Mon" == "$(date +%a)" ]]; then echo \"last friday\"; else echo \"yesterday\"; fi)" --format=%s
+        standup = !git log --branches --remotes --tags --no-merges --author=\"`git config user.name`\" --since=\"`$(if [[ "Mon" == "$(date +%a)" ]]; then echo \"last friday\"; else echo \"yesterday\"; fi)`\" --format=\"%Cred%h%Creset - %s %Cgreen(%cd) %C(bold blue)<%an>%Creset\"
+        lazy-standup = !git standup-simple | spd-say -e
+        
+        # List contributors with number of commits
+        contributors = shortlog --summary --numbered
+        
+        wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+        
+        # Reset filemode changes
+        permission-reset = !git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
+        ignore = "!f() { echo \\\"$1\\\" >> .gitignore; }; f"
+        ignore = "!f() { echo $1 >> .gitignore; }; f"
+        
+        st = status -sb
+        
+        # Sometimes, when you do lots of rebasing/squashing, your git directory becomes very heavy.
+        # With this command, git automatically removes any orphan blob in the .git/ directory.
+        # Tested and approved! For a very often rebased repo, turned it from 4.8GB to 350MB... 😉
+        gcall = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc --aggressive
+        
+        standup-fix = "!git log --branches --remotes --tags --no-merges --author=\"$(git config user.name)\" --since=\"if [[ \\\"Mon\\\" == \\\"$(date +%a)\\\" ]]; then echo \\\"last friday\\\"; else echo \\\"yesterday\\\"; fi\" --format=%s"
+        standup-fix2 = "git push origin HEAD -f log --branches --remotes --tags --no-merges --author=\"Jeroen Thora\" --since=\"if [[ \\\"Mon\\\" == \\\"Mon\\\" ]]; then echo \\\"last friday\\\"; else echo \\\"yesterday\\\"; fi\" --format=%s"
+        standup = "!git log --branches --remotes --tags --no-merges --author=\"`git config user.name`\" --since=\"$(if [[ \"Mon\" == \"$(date +%a)\" ]]; then echo \\\"last friday\\\"; else echo \\\"yesterday\\\"; fi)\" --format=%s"

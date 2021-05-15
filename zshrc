@@ -1,3 +1,4 @@
+### zmodload zsh/zprof # top of your .zshrc file
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -7,6 +8,8 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="doubleend"
+#Set ZSH_THEME to empty string so we don't change the current theme
+#ZSH_THEME="agnoster"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -45,11 +48,16 @@ plugins=(git symfony2 bower composer colored-man-pages colorize cp sudo extract 
 
 source $ZSH/oh-my-zsh.sh
 
+export LC_ALL=en_US.UTF-8
+
 # -------------------------------------------------------------------
 # Exports
 # -------------------------------------------------------------------
-export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+export PATH=$PATH:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+export PATH=/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH=~/.yarn/bin:$PATH
+export PATH=~/Library/Python/2.7/bin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # -------------------------------------------------------------------
@@ -68,3 +76,35 @@ alias phplint='find . -name "*.php" -exec php -l {} \; | grep "Parse error"'
 alias currentdt='echo $(date "+%Y%m%d%H%M%S")'
 
 alias rake="noglob rake" # allows square brackts for rake task invocation
+
+# Make hubkit available as alias
+alias hk="~/.hubkit/bin/hubkit.php"
+export EDITOR=vim
+
+#export PATH="/usr/local/opt/php@7.4/bin:$PATH"
+#export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
+
+#export PATH="/usr/local/opt/php70/bin:$PATH"
+#export PATH="/usr/local/opt/php@7.1/bin:$PATH"
+#export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+#export PATH="/usr/local/opt/php70/bin:$PATH"
+#export PATH="/usr/local/opt/php@7.4/bin:$PATH"
+#export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#export PATH="/usr/local/opt/php@7.1/bin:$PATH"
+#export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/jeroent/.nvm/versions/node/v8.11.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/jeroent/.nvm/versions/node/v8.11.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/jeroent/.nvm/versions/node/v8.11.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/jeroent/.nvm/versions/node/v8.11.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+### zprof # bottom of .zshrc
