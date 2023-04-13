@@ -1,7 +1,8 @@
+[init]
+        defaultBranch = main
 [user]
         name = Jeroen Thora
         email = jeroenthora@gmail.com
-        # Temp disable signing key
         signingkey = 6875186A15599DA9
 [core]
         fileMode = false
@@ -11,6 +12,8 @@
 [gpg]
         #	program = gpg2
         program = gpg
+[merge]
+        log = true        
 [tag]
         sort = version:refname
 [alias]
