@@ -1,8 +1,9 @@
-Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+## Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 *.iml
 ## Directory-based project format:
 .idea/
 ## Ignore mac's DS_Store
 .DS_Store
-
+**/.DS_Store
+## Ignore hubkit config folder by default
 .hubkit
