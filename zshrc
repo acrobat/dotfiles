@@ -44,7 +44,7 @@ ZSH_THEME="doubleend"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git symfony2 bower composer colored-man-pages colorize cp sudo extract github vagrant npm yarn git-flow-avh)
+plugins=(git symfony2 bower composer colored-man-pages colorize cp sudo extract github npm yarn git-flow-avh aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,6 +76,7 @@ alias phplint='find . -name "*.php" -exec php -l {} \; | grep "Parse error"'
 alias currentdt='echo $(date "+%Y%m%d%H%M%S")'
 
 alias rake="noglob rake" # allows square brackts for rake task invocation
+export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 
 # Make hubkit available as alias
 alias hk="~/.hubkit/bin/hubkit.php"
@@ -107,4 +108,18 @@ export NVM_DIR="$HOME/.nvm"
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/jeroent/.nvm/versions/node/v8.11.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/jeroent/.nvm/versions/node/v8.11.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+export PATH="$HOME/.symfony/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+
+unsetopt nomatch
+
 ### zprof # bottom of .zshrc
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+
+# Disable brew auto update on install
+export HOMEBREW_NO_AUTO_UPDATE=1
